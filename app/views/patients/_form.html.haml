@@ -1,0 +1,13 @@
+= simple_form_for(@patient) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :age
+    = f.input :identification
+    = f.input :modality
+    = f.input :catheter
+    = f.input :caliber
+
+  .form-actions
+    = f.button :submit
