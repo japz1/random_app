@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  age: 
+  identification: 
+  modality: 
+  catheter: 
+  caliber: 
+
+two:
+  name: 
+  age: 
+  identification: 
+  modality: 
+  catheter: 
+  caliber: 

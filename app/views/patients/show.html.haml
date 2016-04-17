@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @patient.name
+%p
+  %b Age:
+  = @patient.age
+%p
+  %b Identification:
+  = @patient.identification
+%p
+  %b Modality:
+  = @patient.modality
+%p
+  %b Catheter:
+  = @patient.catheter
+%p
+  %b Caliber:
+  = @patient.caliber
+
+= link_to 'Edit', edit_patient_path(@patient)
+\|
+= link_to 'Back', patients_path

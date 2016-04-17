@@ -10,6 +10,7 @@
   %body
     %header
       = render 'layouts/navigation'
+      /= render 'layouts/nav_links_for_auth'
     %main{:role => "main"}
       = render 'layouts/messages'
       = yield
