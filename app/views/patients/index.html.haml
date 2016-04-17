@@ -1,6 +1,6 @@
 %h1 Listing patients
 
-%table
+%table.table.table-bordered
   %thead
     %tr
       %th Name
@@ -9,9 +9,9 @@
       %th Modality
       %th Catheter
       %th Caliber
-      %th
-      %th
-      %th
+      /%th
+      /%th
+      /%th
 
   %tbody
     - @patients.each do |patient|
