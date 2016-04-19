@@ -3,11 +3,15 @@
 
   .form-inputs
     = f.input :name
-    = f.input :age
-    = f.input :identification
-    = f.input :modality
-    = f.input :catheter
-    = f.input :caliber
+    .row
+      .col-md-4
+        = f.input :age
+      .col-md-4
+        = f.input :identification
+      .col-md-4
+        = f.input :modality, collection: [ "TAC", "RM"]
+    /= f.input :catheter
+    /= f.input :caliber
 
   .form-actions
     = f.button :submit
