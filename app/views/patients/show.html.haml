@@ -12,12 +12,13 @@
 %p
   %b Modality:
   = @patient.modality
-%p
-  %b Catheter:
-  = @patient.catheter
-%p
-  %b Caliber:
-  = @patient.caliber
+-if current_user.role != "radiologist"
+  %p
+    %b Catheter:
+    = @patient.catheter
+  %p
+    %b Caliber:
+    = @patient.caliber
 
 = link_to 'Edit', edit_patient_path(@patient)
 \|

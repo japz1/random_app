@@ -1,4 +1,7 @@
 %h1 Listing patients
+%td= current_user.role
+%td= current_user.name
+
 
 %table.table.table-bordered
   %thead
@@ -7,8 +10,9 @@
       %th Age
       %th Identification
       %th Modality
-      %th Catheter
-      %th Caliber
+      -if current_user.role != "radiologist"
+        %th Catheter
+        %th Caliber
       /%th
       /%th
       /%th
@@ -20,8 +24,9 @@
         %td= patient.age
         %td= patient.identification
         %td= patient.modality
-        %td= patient.catheter
-        %td= patient.caliber
+        -if current_user.role != "radiologist" 
+          %td= patient.catheter
+          %td= patient.caliber
         %td= link_to 'Show', patient
         %td= link_to 'Edit', edit_patient_path(patient)
         %td= link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
