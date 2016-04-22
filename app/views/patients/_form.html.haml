@@ -12,9 +12,7 @@
         = f.input :modality, collection: [ "TAC", "RM"]
       -if current_user.role != "nurse"
         .col-md-4
-          = f.input :qualitative_scale, collection: [ 1, 2, 3, 4]
-        .col-md-4
-          = f.input :radiologist_name, collection: [ "Dr Llano", "Dr Pedro", "Dr Velez"]
+          = f.input :qualitative_scale, collection: [ "No evaluable", "No es óptimo", "Aceptable", "Óptimo"]
 
 
     /= f.input :catheter

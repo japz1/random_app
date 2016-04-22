@@ -1,8 +1,8 @@
 %h1 Listing patients
 %td= current_user.role
-%td= current_user.name
+%h2= current_user.name
 
-
+%td= link_to 'New Patient', new_patient_path, class:  "btn btn-small btn-info"
 %table.table.table-bordered
   %thead
     %tr
@@ -15,7 +15,6 @@
         %th Caliber
       -if current_user.role != "nurse"
         %th qualitative_scale
-        %th radiologist_name
       /%th
       /%th
       /%th
@@ -32,12 +31,9 @@
           %td= patient.caliber
         -if current_user.role != "nurse"
           %td= patient.qualitative_scale
-          %td= patient.radiologist_name
         %td= link_to 'Show', patient
         %td= link_to 'Edit', edit_patient_path(patient)
         -if current_user.role == "admin" 
           %td= link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-
-= link_to 'New Patient', new_patient_path

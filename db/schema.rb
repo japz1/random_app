@@ -23,8 +23,7 @@ ActiveRecord::Schema.define(version: 20160420040054) do
     t.integer  "user_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.integer  "qualitative_scale"
-    t.string   "radiologist_name"
+    t.string   "qualitative_scale"
   end
 
   add_index "patients", ["user_id", "created_at"], name: "index_patients_on_user_id_and_created_at"

@@ -72,7 +72,7 @@ class PatientsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
       params.require(:patient).permit(:name, :age, :identification, :modality, :catheter, :caliber, 
-                                      :qualitative_scale, :user_id, :radiologist_name)
+                                      :qualitative_scale, :user_id)
     end
 
 end
