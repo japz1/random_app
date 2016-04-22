@@ -1,7 +1,6 @@
 class Patient < ActiveRecord::Base
   @@num_rms = 2
   @@num_tacs = 2
-
   validates :name, :age, :identification, :modality, presence: true
   before_create :set_random_algorithm
   validate :validate_quantity

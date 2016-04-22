@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420001846) do
+ActiveRecord::Schema.define(version: 20160420040054) do
 
   create_table "patients", force: :cascade do |t|
-    t.string   "name",           null: false
-    t.integer  "age",            null: false
-    t.string   "identification", null: false
-    t.string   "modality",       null: false
-    t.string   "catheter",       null: false
-    t.string   "caliber",        null: false
+    t.string   "name",              null: false
+    t.integer  "age",               null: false
+    t.string   "identification",    null: false
+    t.string   "modality",          null: false
+    t.string   "catheter",          null: false
+    t.string   "caliber",           null: false
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "qualitative_scale"
+    t.string   "radiologist_name"
   end
 
   add_index "patients", ["user_id", "created_at"], name: "index_patients_on_user_id_and_created_at"

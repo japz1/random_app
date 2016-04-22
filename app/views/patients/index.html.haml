@@ -13,6 +13,9 @@
       -if current_user.role != "radiologist"
         %th Catheter
         %th Caliber
+      -if current_user.role != "nurse"
+        %th qualitative_scale
+        %th radiologist_name
       /%th
       /%th
       /%th
@@ -27,9 +30,13 @@
         -if current_user.role != "radiologist" 
           %td= patient.catheter
           %td= patient.caliber
+        -if current_user.role != "nurse"
+          %td= patient.qualitative_scale
+          %td= patient.radiologist_name
         %td= link_to 'Show', patient
         %td= link_to 'Edit', edit_patient_path(patient)
-        %td= link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        -if current_user.role == "admin" 
+          %td= link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

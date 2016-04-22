@@ -19,6 +19,13 @@
   %p
     %b Caliber:
     = @patient.caliber
+-if current_user.role != "nurse"
+  %p
+    %b qualitative_scale:
+    = @patient.qualitative_scale
+  %p
+    %b radiologist_name:
+    = @patient.radiologist_name
 
 = link_to 'Edit', edit_patient_path(@patient)
 \|
