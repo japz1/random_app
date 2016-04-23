@@ -1,20 +1,21 @@
-%h1 Listing patients
+%h1 Listado de Pacientes
 %td= current_user.role
 %h2= current_user.name
 
-%td= link_to 'New Patient', new_patient_path, class:  "btn btn-small btn-info"
+%td= link_to 'Nuevo paciente', new_patient_path, class:  "btn btn-default"
+%h4 &nbsp;
 %table.table.table-bordered
   %thead
     %tr
-      %th Name
-      %th Age
-      %th Identification
-      %th Modality
+      %th Nombre
+      %th Edad
+      %th Identificación
+      %th Modalidad
       -if current_user.role != "radiologist"
-        %th Catheter
-        %th Caliber
+        %th Catéter
+        %th Calibre
       -if current_user.role != "nurse"
-        %th qualitative_scale
+        %th Escala cualitativa
       /%th
       /%th
       /%th
@@ -31,9 +32,9 @@
           %td= patient.caliber
         -if current_user.role != "nurse"
           %td= patient.qualitative_scale
-        %td= link_to 'Show', patient
-        %td= link_to 'Edit', edit_patient_path(patient)
+        %td= link_to 'Mostrar', patient
+        %td= link_to 'Editar', edit_patient_path(patient)
         -if current_user.role == "admin" 
-          %td= link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td= link_to 'Eliminar', patient, :method => :delete, :data => { :confirm => '¿Está seguro?' }
 
 %br

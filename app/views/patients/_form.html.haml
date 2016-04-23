@@ -2,21 +2,17 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :name
+    = f.input :name, label: 'Nombre'
     .row
       .col-md-4
-        = f.input :age
+        = f.input :age, label: 'Edad'
       .col-md-4
-        = f.input :identification
+        = f.input :identification, label: 'Identificación'
       .col-md-4
-        = f.input :modality, collection: [ "TAC", "RM"]
+        = f.input :modality, collection: [ "TAC", "RM"], label: 'Modalidad'
       -if current_user.role != "nurse"
         .col-md-4
-          = f.input :qualitative_scale, collection: [ "No evaluable", "No es óptimo", "Aceptable", "Óptimo"]
-
-
-    /= f.input :catheter
-    /= f.input :caliber
+          = f.input :qualitative_scale, collection: [ "No evaluable", "No es óptimo", "Aceptable", "Óptimo"], label: 'Escala cualitativa'
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, 'Crear paciente'
