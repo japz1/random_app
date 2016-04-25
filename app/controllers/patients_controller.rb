@@ -5,7 +5,7 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.all
+    @patients = Patient.order(created_at: :desc)
   end
 
   # GET /patients/1
@@ -72,7 +72,7 @@ class PatientsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
       params.require(:patient).permit(:name, :age, :identification, :modality, :catheter, :caliber, 
-                                      :qualitative_scale, :user_id)
+                                      :qualitative_scale, :user_id, :number_punctures, :catheter_exchange)
     end
 
 end

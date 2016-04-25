@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    submit:
+      create: "Crear Paciente"
+      update: "Actualizar Paciente"
+

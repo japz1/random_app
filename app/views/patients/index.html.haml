@@ -2,7 +2,8 @@
 %td= current_user.role
 %h2= current_user.name
 
-%td= link_to 'Nuevo paciente', new_patient_path, class:  "btn btn-default"
+-if current_user.role != "radiologist"
+  %td= link_to 'Nuevo paciente', new_patient_path, class:  "btn btn-default"
 %h4 &nbsp;
 %table.table.table-bordered
   %thead
@@ -14,6 +15,8 @@
       -if current_user.role != "radiologist"
         %th Catéter
         %th Calibre
+        %th Número de Punciones
+        %th Cambio de Catéter
       -if current_user.role != "nurse"
         %th Escala cualitativa
       /%th
@@ -30,6 +33,11 @@
         -if current_user.role != "radiologist" 
           %td= patient.catheter
           %td= patient.caliber
+          %td= patient.number_punctures
+          -if patient.catheter_exchange? 
+            %td= "si"
+          -else 
+            %td= "no"
         -if current_user.role != "nurse"
           %td= patient.qualitative_scale
         %td= link_to 'Mostrar', patient
