@@ -32,8 +32,8 @@
       .row
         .col-md-4
           %p
-            %b Catéter:
-            = @patient.catheter
+            %b Modalidad:
+            = @patient.modality
         .col-md-4
           %p
             %b Catéter:
@@ -47,7 +47,7 @@
           = f.input :number_punctures, label: 'Número de Punciones' 
         .col-md-4
           = f.input :catheter_exchange, label: 'Cambio de Catéter' 
-
+          
   -else   
     .form-inputs
       = f.input :name, label: 'Nombre'

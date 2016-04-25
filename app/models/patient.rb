@@ -6,17 +6,17 @@
   validate :validate_quantity
 
   def set_random_algorithm
-    array_rm = [{type_catheter: "NG", type_caliber: 20}, {type_catheter: "NG", type_caliber: 22},
-                {type_catheter: "CC", type_caliber: 20}, {type_catheter: "CC", type_caliber: 22}]
+    array_rm = [{type_catheter: "Nueva Generación", type_caliber: 20}, {type_catheter: "Nueva Generación", type_caliber: 22},
+                {type_catheter: "Catéter convencional", type_caliber: 20}, {type_catheter: "Catéter convencional", type_caliber: 22}]
 
-    array_tac = [{type_catheter: "NG", type_caliber: 20}, {type_catheter: "NG", type_caliber: 22},
-                 {type_catheter: "CC", type_caliber: 18}, {type_catheter: "CC", type_caliber: 20}]
+    array_tac = [{type_catheter: "Nueva Generación", type_caliber: 20}, {type_catheter: "Nueva Generación", type_caliber: 22},
+                 {type_catheter: "Catéter convencional", type_caliber: 18}, {type_catheter: "Catéter convencional", type_caliber: 20}]
 
     if modality == "RM"
 
       loop do
         random = rand(0..3)
-        if Patient.where(modality: "RM", catheter: array_rm[random][:type_catheter], caliber: array_rm[random][:type_caliber]).count < @@num_rms
+        if Patient.where(modality: "RM", catheter_exchange: false, catheter: array_rm[random][:type_catheter], caliber: array_rm[random][:type_caliber]).count < @@num_rms
           self.catheter = array_rm[random][:type_catheter]
           self.caliber = array_rm[random][:type_caliber]
           break
@@ -27,7 +27,7 @@
 
       loop do
         random = rand(0..3)
-        if Patient.where(modality: "TAC", catheter: array_tac[random][:type_catheter], caliber: array_tac[random][:type_caliber]).count < @@num_tacs
+        if Patient.where(modality: "TAC", catheter_exchange: false, catheter: array_tac[random][:type_catheter], caliber: array_tac[random][:type_caliber]).count < @@num_tacs
           self.catheter = array_tac[random][:type_catheter]
           self.caliber = array_tac[random][:type_caliber]
           break

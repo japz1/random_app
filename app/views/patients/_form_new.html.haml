@@ -14,15 +14,15 @@
       .row
         .col-md-4
           = f.input :modality, collection: [ "TAC", "RM"], label: 'Modalidad'
-      .row
-        .col-md-4
-          = f.input :number_punctures, label: 'Número de Punciones' 
-        .col-md-4
-          = f.input :catheter_exchange, label: 'Cambio de Catéter' 
-      -if current_user.role == "admin"
-        .row
-          .col-md-4
-            = f.input :qualitative_scale, collection: [ "No evaluable", "No es óptimo", "Aceptable", "Óptimo"], label: 'Escala cualitativa'
+      / .row
+      /   .col-md-4
+      /     = f.input :number_punctures, label: 'Número de Punciones' 
+      /   .col-md-4
+      /     = f.input :catheter_exchange, label: 'Cambio de Catéter' 
+      / -if current_user.role == "admin"
+      /   .row
+      /     .col-md-4
+      /       = f.input :qualitative_scale, collection: [ "No evaluable", "No es óptimo", "Aceptable", "Óptimo"], label: 'Escala cualitativa'
 
   .form-actions
     = f.button :submit

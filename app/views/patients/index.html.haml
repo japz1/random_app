@@ -45,4 +45,4 @@
         -if current_user.role == "admin" 
           %td= link_to 'Eliminar', patient, :method => :delete, :data => { :confirm => '¿Está seguro?' }
 
-%br
+= paginate @patients
