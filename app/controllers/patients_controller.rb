@@ -6,6 +6,12 @@ class PatientsController < ApplicationController
   # GET /patients.json
   def index
     @patients = Patient.order(created_at: :desc).page params[:page]
+
+    @patients_scv = Patient.all
+      respond_to do |format|
+      format.html
+      format.csv { send_data @patients_scv.to_csv }
+    end
   end
 
   # GET /patients/1

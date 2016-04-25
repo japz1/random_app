@@ -1,6 +1,7 @@
 %h1 Listado de Pacientes
 %td= current_user.role
-%h2= current_user.name
+-if current_user.role == "admin"
+  %td= link_to "generar reporte cvs", patients_path(format: "csv"), class:  "btn btn-default"
 
 -if current_user.role != "radiologist"
   %td= link_to 'Nuevo paciente', new_patient_path, class:  "btn btn-default"
