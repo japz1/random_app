@@ -10,7 +10,7 @@ class PatientsController < ApplicationController
     @patients_scv = Patient.all
       respond_to do |format|
       format.html
-      format.csv { send_data @patients_scv.to_csv }
+      format.csv { send_data @patients_scv.to_csv, :type => "text/csv; charset=utf-8; header=present"}
     end
   end
 

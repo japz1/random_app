@@ -6,6 +6,36 @@
 -if current_user.role != "radiologist"
   %td= link_to 'Nuevo paciente', new_patient_path, class:  "btn btn-default"
 %h4 &nbsp;
+
+-if current_user.role == "admin"
+  %p
+    %b RM:
+    = @patients.where(modality: "RM", catheter_exchange: false).count
+    %b RM (CC,20G):
+    = @patients.where(modality: "RM", catheter: "Catéter convencional", caliber: 20, catheter_exchange: false).count
+    %b RM (CC,22G):
+    = @patients.where(modality: "RM", catheter: "Catéter convencional", caliber: 22, catheter_exchange: false).count
+    %b RM (NG,20G):
+    = @patients.where(modality: "RM", catheter: "Nueva Generación", caliber: 20, catheter_exchange: false).count
+    %b RM (NG,22G):
+    = @patients.where(modality: "RM", catheter: "Nueva Generación", caliber: 22, catheter_exchange: false).count
+    %b | RM (cambio catéter):
+    = @patients.where(modality: "RM", catheter_exchange: true).count
+  %p
+    %b TAC:
+    = @patients.where(modality: "TAC", catheter_exchange: false).count
+    %b TAC (CC,18G):
+    = @patients.where(modality: "TAC", catheter: "Catéter convencional", caliber: 18, catheter_exchange: false).count
+    %b TAC (CC,20G):
+    = @patients.where(modality: "TAC", catheter: "Catéter convencional", caliber: 20, catheter_exchange: false).count
+    %b TAC (NG,20G):
+    = @patients.where(modality: "TAC", catheter: "Nueva Generación", caliber: 20, catheter_exchange: false).count
+    %b TAC (NG,22G):
+    = @patients.where(modality: "TAC", catheter: "Nueva Generación", caliber: 22, catheter_exchange: false).count
+    %b | TAC (cambio catéter):
+    = @patients.where(modality: "TAC", catheter_exchange: true).count
+  %h4 &nbsp;
+
 %table.table.table-bordered
   %thead
     %tr

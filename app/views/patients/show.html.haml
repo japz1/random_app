@@ -14,12 +14,6 @@
   = @patient.modality
 -if current_user.role != "radiologist"
   %p
-    %b Catéter:
-    = @patient.catheter
-  %p
-    %b Calibre:
-    = @patient.caliber
-  %p
     %b Número de Punciones:
     = @patient.number_punctures
   %p
@@ -28,6 +22,14 @@
       = "si"
     -else 
       = "no"
+  %p
+    %h2
+      %b Catéter:
+      = @patient.catheter
+  %p
+    %h2
+      %b Calibre:
+      = @patient.caliber
 
 -if current_user.role != "nurse"
   %p

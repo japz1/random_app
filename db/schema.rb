@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160423212653) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "qualitative_scale"
-    t.integer  "number_punctures"
+    t.integer  "number_punctures",  default: 1
     t.boolean  "catheter_exchange", default: false
   end
 
