@@ -1,24 +1,41 @@
 %p#notice= notice
 
 %p
-  %b Name:
+  %b Nombre:
   = @patient.name
 %p
-  %b Age:
+  %b Edad:
   = @patient.age
 %p
-  %b Identification:
+  %b Identificación:
   = @patient.identification
 %p
-  %b Modality:
+  %b Modalidad:
   = @patient.modality
-%p
-  %b Catheter:
-  = @patient.catheter
-%p
-  %b Caliber:
-  = @patient.caliber
+-if current_user.role != "radiologist"
+  %p
+    %b Número de Punciones:
+    = @patient.number_punctures
+  %p
+    %b Cambio de Catéter:
+    -if @patient.catheter_exchange? 
+      = "si"
+    -else 
+      = "no"
+  %p
+    %h2
+      %b Catéter:
+      = @patient.catheter
+  %p
+    %h2
+      %b Calibre:
+      = @patient.caliber
 
-= link_to 'Edit', edit_patient_path(@patient)
+-if current_user.role != "nurse"
+  %p
+    %b Escala Cualitativa:
+    = @patient.qualitative_scale
+
+= link_to 'Editar', edit_patient_path(@patient)
 \|
-= link_to 'Back', patients_path
+= link_to 'Átras', patients_path

@@ -1,10 +1,17 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.all
+    @patients = Patient.order(created_at: :desc).page params[:page]
+
+    @patients_scv = Patient.all
+      respond_to do |format|
+      format.html
+      format.csv { send_data @patients_scv.to_csv, :type => "text/csv; charset=utf-8; header=present"}
+    end
   end
 
   # GET /patients/1
@@ -25,6 +32,7 @@ class PatientsController < ApplicationController
   # POST /patients.json
   def create
     @patient = Patient.new(patient_params)
+    @patient.user_id = current_user.id
 
     respond_to do |format|
       if @patient.save
@@ -69,6 +77,8 @@ class PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params.require(:patient).permit(:name, :age, :identification, :modality, :catheter, :caliber)
+      params.require(:patient).permit(:name, :age, :identification, :modality, :catheter, :caliber, 
+                                      :qualitative_scale, :user_id, :number_punctures, :catheter_exchange)
     end
+
 end

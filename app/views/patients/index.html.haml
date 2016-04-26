@@ -1,14 +1,55 @@
-%h1 Listing patients
+%h1 Listado de Pacientes
+%td= current_user.role
+-if current_user.role == "admin"
+  %td= link_to "generar reporte cvs", patients_path(format: "csv"), class:  "btn btn-default"
+
+-if current_user.role != "radiologist"
+  %td= link_to 'Nuevo paciente', new_patient_path, class:  "btn btn-default"
+%h4 &nbsp;
+
+-if current_user.role == "admin"
+  %p
+    %b RM:
+    = @patients.where(modality: "RM", catheter_exchange: false).count
+    %b RM (CC,20G):
+    = @patients.where(modality: "RM", catheter: "Catéter convencional", caliber: 20, catheter_exchange: false).count
+    %b RM (CC,22G):
+    = @patients.where(modality: "RM", catheter: "Catéter convencional", caliber: 22, catheter_exchange: false).count
+    %b RM (NG,20G):
+    = @patients.where(modality: "RM", catheter: "Nueva Generación", caliber: 20, catheter_exchange: false).count
+    %b RM (NG,22G):
+    = @patients.where(modality: "RM", catheter: "Nueva Generación", caliber: 22, catheter_exchange: false).count
+    %b | RM (cambio catéter):
+    = @patients.where(modality: "RM", catheter_exchange: true).count
+  %p
+    %b TAC:
+    = @patients.where(modality: "TAC", catheter_exchange: false).count
+    %b TAC (CC,18G):
+    = @patients.where(modality: "TAC", catheter: "Catéter convencional", caliber: 18, catheter_exchange: false).count
+    %b TAC (CC,20G):
+    = @patients.where(modality: "TAC", catheter: "Catéter convencional", caliber: 20, catheter_exchange: false).count
+    %b TAC (NG,20G):
+    = @patients.where(modality: "TAC", catheter: "Nueva Generación", caliber: 20, catheter_exchange: false).count
+    %b TAC (NG,22G):
+    = @patients.where(modality: "TAC", catheter: "Nueva Generación", caliber: 22, catheter_exchange: false).count
+    %b | TAC (cambio catéter):
+    = @patients.where(modality: "TAC", catheter_exchange: true).count
+  %h4 &nbsp;
 
 %table.table.table-bordered
   %thead
     %tr
-      %th Name
-      %th Age
-      %th Identification
-      %th Modality
-      %th Catheter
-      %th Caliber
+      %th Nombre
+      %th Edad
+      %th Identificación
+      %th Modalidad
+      -if current_user.role != "radiologist"
+        %th Catéter
+        %th Calibre
+        %th Número de Punciones
+        %th Cambio de Catéter
+      -if current_user.role != "nurse"
+        %th Escala cualitativa
       /%th
       /%th
       /%th
@@ -20,12 +61,19 @@
         %td= patient.age
         %td= patient.identification
         %td= patient.modality
-        %td= patient.catheter
-        %td= patient.caliber
-        %td= link_to 'Show', patient
-        %td= link_to 'Edit', edit_patient_path(patient)
-        %td= link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        -if current_user.role != "radiologist" 
+          %td= patient.catheter
+          %td= patient.caliber
+          %td= patient.number_punctures
+          -if patient.catheter_exchange? 
+            %td= "si"
+          -else 
+            %td= "no"
+        -if current_user.role != "nurse"
+          %td= patient.qualitative_scale
+        %td= link_to 'Mostrar', patient
+        %td= link_to 'Editar', edit_patient_path(patient)
+        -if current_user.role == "admin" 
+          %td= link_to 'Eliminar', patient, :method => :delete, :data => { :confirm => '¿Está seguro?' }
 
-%br
-
-= link_to 'New Patient', new_patient_path
+= paginate @patients

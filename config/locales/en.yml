@@ -21,3 +21,15 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    submit:
+      create: "Crear Paciente"
+      update: "Actualizar Paciente"
+  views:
+    pagination:
+      first: "Primera" #"&laquo; First"
+      last: "Última" #Last &raquo;"
+      previous: "<< Anterior" #"&lsaquo; Prev"
+      next: "Siguiente >>" #"Next &rsaquo;"
+      truncate: "..." #"&hellip;"
+
