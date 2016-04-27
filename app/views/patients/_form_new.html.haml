@@ -10,6 +10,8 @@
         .col-md-4
           = f.input :age, label: 'Edad'
         .col-md-4
+          = f.input :sex, label: 'Sexo', collection: ["Mujer", "Hombre"]
+        .col-md-4
           = f.input :identification, label: 'Identificación'
       .row
         .col-md-4

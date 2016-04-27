@@ -11,21 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423212653) do
+ActiveRecord::Schema.define(version: 20160427003441) do
 
   create_table "patients", force: :cascade do |t|
-    t.string   "name",                              null: false
-    t.integer  "age",                               null: false
-    t.string   "identification",                    null: false
-    t.string   "modality",                          null: false
-    t.string   "catheter",                          null: false
-    t.string   "caliber",                           null: false
+    t.string   "name",                                                                  null: false
+    t.integer  "age",                                                                   null: false
+    t.string   "identification",                                                        null: false
+    t.string   "modality",                                                              null: false
+    t.string   "catheter",                                                              null: false
+    t.string   "caliber",                                                               null: false
     t.integer  "user_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                                                            null: false
+    t.datetime "updated_at",                                                            null: false
     t.string   "qualitative_scale"
-    t.integer  "number_punctures",  default: 1
-    t.boolean  "catheter_exchange", default: false
+    t.integer  "number_punctures",                                      default: 1
+    t.boolean  "catheter_exchange",                                     default: false
+    t.string   "sex"
+    t.boolean  "oncological"
+    t.boolean  "cardiovascular"
+    t.boolean  "recent_intravenous_treatment"
+    t.decimal  "injection_speed",              precision: 15, scale: 2
+    t.boolean  "change_speed_injection"
+    t.boolean  "injury"
+    t.string   "injury_type"
+    t.boolean  "fhlebitis"
+    t.string   "fhlebitis_type"
+    t.boolean  "puncture"
+    t.boolean  "blood_exposure"
+    t.string   "blood_exposure_type"
+    t.integer  "insertion_pain"
+    t.integer  "administration_pain"
+    t.string   "type_procedure"
+    t.boolean  "rupture"
+    t.boolean  "complete_record"
   end
 
   add_index "patients", ["user_id", "created_at"], name: "index_patients_on_user_id_and_created_at"

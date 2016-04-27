@@ -10,6 +10,9 @@
       %b Edad:
       = @patient.age
     %p
+      %b sexo:
+      = @patient.sex
+    %p
       %b Identificación:
       = @patient.identification
     %p
@@ -27,6 +30,8 @@
       .row
         .col-md-4
           = f.input :age, label: 'Edad'
+        .col-md-4
+          = f.input :sex, label: 'Sexo', collection: ["Mujer", "Hombre"]
         .col-md-4
           = f.input :identification, label: 'Identificación'
       .row
@@ -55,6 +60,8 @@
         .col-md-4
           = f.input :age, label: 'Edad'
         .col-md-4
+          = f.input :sex, label: 'Sexo', collection: ["Mujer", "Hombre"]
+        .col-md-4
           = f.input :identification, label: 'Identificación'
       .row
         .col-md-4
@@ -74,10 +81,50 @@
           = f.input :number_punctures, label: 'Número de Punciones' 
         .col-md-4
           = f.input :catheter_exchange, label: 'Cambio de Catéter' 
-      .row
         .col-md-4
           = f.input :qualitative_scale, collection: [ "No evaluable", "No es óptimo", "Aceptable", "Óptimo"], label: 'Escala cualitativa'
-
+      .row
+        .col-md-4
+          = f.input :oncological, label: "Oncológico (Quimio-radioterapia)"
+        .col-md-4
+          = f.input :cardiovascular, label: "Cardiovascular"
+        .col-md-4
+          = f.input :recent_intravenous_treatment, label: "Tratamiento Intravenoso reciente"
+      .row
+        .col-md-4
+          = f.input :injection_speed, label: "Velocidad de inyección (ml/s)"
+        .col-md-4
+          = f.input :change_speed_injection, label: "Modificación velocidad inyección"
+      .row
+        .col-md-4
+          = f.input :injury, label: "Lesión"
+        .col-md-4
+          = f.input :injury_type, label: "Tipo de lesión", collection: ["Infiltración", "Extravasación"]
+      .row
+        .col-md-4
+          = f.input :fhlebitis, label: "Flebitis"
+        .col-md-4
+          = f.input :fhlebitis_type, label: "Tipo de flebitis", collection: ["Mécanica", "Química"]
+      .row
+        .col-md-4
+          = f.input :puncture, label: "Punción"
+        .col-md-4
+          = f.input :blood_exposure, label: "Exposición sangre"
+        .col-md-4
+          = f.input :blood_exposure_type, label: "Tipo de exposición sangre", collection: ["Salpicadura", "Goteo", "Derrame"]
+      .row
+        .col-md-4
+          = f.input :insertion_pain, label: "Dolor inserción", collection: 0..10
+        .col-md-4
+          = f.input :administration_pain, label: "Dolor administración", collection: 0..10
+        .col-md-4
+          = f.input :rupture, label: "Ruptura"
+      .row
+        .col-md-12
+          = f.input :type_procedure, label: "Tipo de procedimiento"
+      .row
+        .col-md-4
+          = f.input :complete_record, label: "Registro de enfermería completado"
 
   .form-actions
     = f.button :submit

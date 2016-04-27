@@ -41,15 +41,17 @@
     %tr
       %th Nombre
       %th Edad
-      %th Identificación
+      %th ID
       %th Modalidad
       -if current_user.role != "radiologist"
         %th Catéter
         %th Calibre
-        %th Número de Punciones
-        %th Cambio de Catéter
+        %th Punciones
+        %th Cambio Catéter
       -if current_user.role != "nurse"
         %th Escala cualitativa
+      -if current_user.role == "admin"
+        %th Check
       /%th
       /%th
       /%th
@@ -71,6 +73,11 @@
             %td= "no"
         -if current_user.role != "nurse"
           %td= patient.qualitative_scale
+        -if current_user.role == "admin"
+          -if patient.catheter_exchange? 
+            %td= "si"
+          -else 
+            %td= "no"
         %td= link_to 'Mostrar', patient
         %td= link_to 'Editar', edit_patient_path(patient)
         -if current_user.role == "admin" 
