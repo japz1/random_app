@@ -10,7 +10,7 @@ class PatientsController < ApplicationController
     @patients_scv = Patient.all
       respond_to do |format|
       format.html
-      format.csv { send_data @patients_scv.to_csv, :type => "text/csv; charset=utf-8; header=present"}
+      format.csv { send_data @patients_scv.to_csv}
     end
   end
 
@@ -77,8 +77,12 @@ class PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params.require(:patient).permit(:name, :age, :identification, :modality, :catheter, :caliber, 
-                                      :qualitative_scale, :user_id, :number_punctures, :catheter_exchange)
+      params.require(:patient).permit(:name, :age, :sex, :identification, :modality, :catheter, :caliber, 
+                                      :qualitative_scale, :user_id, :number_punctures, :catheter_exchange,
+                                      :oncological, :cardiovascular, :recent_intravenous_treatment, :injection_speed,
+                                      :change_speed_injection, :injury, :injury_type, :fhlebitis, :fhlebitis_type,
+                                      :puncture, :blood_exposure, :blood_exposure_type, :insertion_pain,
+                                      :administration_pain, :type_procedure, :rupture, :complete_record)
     end
 
 end
