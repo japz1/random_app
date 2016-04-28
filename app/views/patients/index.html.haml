@@ -74,7 +74,7 @@
         -if current_user.role != "nurse"
           %td= patient.qualitative_scale
         -if current_user.role == "admin"
-          -if patient.catheter_exchange? 
+          -if patient.complete_record? 
             %td= "si"
           -else 
             %td= "no"
