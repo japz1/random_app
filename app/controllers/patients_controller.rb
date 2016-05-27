@@ -5,7 +5,11 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.order(created_at: :desc).page params[:page]
+    if current_user.role == "radiologist"
+      @patients = Patient.search(params[:search]).where(qualitative_scale: nil).page params[:page]
+    else 
+      @patients = Patient.search(params[:search]).order(created_at: :desc).page params[:page]
+    end
 
     @patients_scv = Patient.all
       respond_to do |format|

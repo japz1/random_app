@@ -1,6 +1,15 @@
   class Patient < ActiveRecord::Base
-  @@num_rms = 2
-  @@num_tacs = 2
+
+  def self.search(search)
+    if search != ""
+      where('name LIKE ?', "%#{search}%")
+    else
+      order(qualitative_scale: :asc)
+    end
+  end
+
+  @@num_rms = 400
+  @@num_tacs = 400
   
   validates :name, :age, :identification, :modality, presence: true
   validate :validate_quantity, on: :create
