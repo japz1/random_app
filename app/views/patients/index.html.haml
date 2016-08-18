@@ -15,30 +15,30 @@
 -if current_user.role == "admin"
   %p
     %b RM:
-    = @patients.where(modality: "RM", catheter_exchange: false).count
+    = @patients.where(modality: "RM", catheter_exchange: false).total_count
     %b RM (CC,20G):
-    = @patients.where(modality: "RM", catheter: "Catéter convencional", caliber: 20, catheter_exchange: false).count
+    = @patients.where(modality: "RM", catheter: "Catéter convencional", caliber: 20, catheter_exchange: false).total_count
     %b RM (CC,22G):
-    = @patients.where(modality: "RM", catheter: "Catéter convencional", caliber: 22, catheter_exchange: false).count
+    = @patients.where(modality: "RM", catheter: "Catéter convencional", caliber: 22, catheter_exchange: false).total_count
     %b RM (NG,20G):
-    = @patients.where(modality: "RM", catheter: "Nueva Generación", caliber: 20, catheter_exchange: false).count
+    = @patients.where(modality: "RM", catheter: "Nueva Generación", caliber: 20, catheter_exchange: false).total_count
     %b RM (NG,22G):
-    = @patients.where(modality: "RM", catheter: "Nueva Generación", caliber: 22, catheter_exchange: false).count
+    = @patients.where(modality: "RM", catheter: "Nueva Generación", caliber: 22, catheter_exchange: false).total_count
     %b | RM (cambio catéter):
-    = @patients.where(modality: "RM", catheter_exchange: true).count
+    = @patients.where(modality: "RM", catheter_exchange: true).total_count
   %p
     %b TAC:
-    = @patients.where(modality: "TAC", catheter_exchange: false).count
+    = @patients.where(modality: "TAC", catheter_exchange: false).total_count
     %b TAC (CC,18G):
-    = @patients.where(modality: "TAC", catheter: "Catéter convencional", caliber: 18, catheter_exchange: false).count
+    = @patients.where(modality: "TAC", catheter: "Catéter convencional", caliber: 18, catheter_exchange: false).total_count
     %b TAC (CC,20G):
-    = @patients.where(modality: "TAC", catheter: "Catéter convencional", caliber: 20, catheter_exchange: false).count
+    = @patients.where(modality: "TAC", catheter: "Catéter convencional", caliber: 20, catheter_exchange: false).total_count
     %b TAC (NG,20G):
-    = @patients.where(modality: "TAC", catheter: "Nueva Generación", caliber: 20, catheter_exchange: false).count
+    = @patients.where(modality: "TAC", catheter: "Nueva Generación", caliber: 20, catheter_exchange: false).total_count
     %b TAC (NG,22G):
-    = @patients.where(modality: "TAC", catheter: "Nueva Generación", caliber: 22, catheter_exchange: false).count
+    = @patients.where(modality: "TAC", catheter: "Nueva Generación", caliber: 22, catheter_exchange: false).total_count
     %b | TAC (cambio catéter):
-    = @patients.where(modality: "TAC", catheter_exchange: true).count
+    = @patients.where(modality: "TAC", catheter_exchange: true).total_count
   %h4 &nbsp;
 
 %table.table.table-bordered
