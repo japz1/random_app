@@ -8,8 +8,8 @@
     end
   end
 
-  @@num_rms = 400
-  @@num_tacs = 400
+  @@num_rms = 25
+  @@num_tacs = 175
   
   validates :name, :age, :identification, :modality, presence: true
   validate :validate_quantity, on: :create
