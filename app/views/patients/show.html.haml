@@ -12,6 +12,10 @@
 %p
   %b Modalidad:
   = @patient.modality
+%p
+  %b Fecha de atención:
+  = @patient.created_at.strftime("%b %d, %Y")
+
 -if current_user.role != "radiologist"
   %p
     %b Número de Punciones:
