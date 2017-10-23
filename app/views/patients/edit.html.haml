@@ -1,6 +1,10 @@
 %h1 Editar paciente
+%p
+  %b Fecha de atención:
+  = @patient.created_at.strftime("%b %d, %Y")
 
 = render 'form'
+
 
 = link_to 'Mostrar', @patient
 \|
